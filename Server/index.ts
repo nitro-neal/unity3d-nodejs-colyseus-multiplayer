@@ -8,6 +8,7 @@ import socialRoutes from "@colyseus/social/express";
 import { DemoRoom } from "./rooms/DemoRoom";
 import { FossilDeltaRoom } from "./rooms/FossilDeltaRoom";
 import { RoomWithoutState } from "./rooms/RoomWithoutState";
+import { AmongUsRoom } from "./rooms/AmongUsRoom";
 
 const PORT = Number(process.env.PORT || 2567);
 
@@ -24,8 +25,11 @@ const gameServer = new Server({
   pingInterval: 0,
 });
 
+// gameServer.simulateLatency(200);
+
 // Register DemoRoom as "demo"
 gameServer.define("demo", DemoRoom);
+gameServer.define("amongus", AmongUsRoom);
 gameServer.define("lobby", LobbyRoom);
 gameServer.define("fossildelta", FossilDeltaRoom);
 gameServer.define("no_state", RoomWithoutState);
